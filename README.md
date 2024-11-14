@@ -2,10 +2,53 @@
 
 # ( ..)φメモメモ
 フロントエンドとバックエンドでディレクトリを分けた
-フロントエンド：react-app
+フロントエンド：frontend
 バックエンド：server
 
-## フロントエンドの構築
+/frontend
+  ├── /node_modules
+  ├── /public
+  ├── /src   
+  │   ├── /assets       // 画像やスタイルシート（CSS、Sassなど）を格納するフォルダ。
+  |   │   ├── /css      // cssを格納
+  │   │   ├── /images   // 画像ファイルを格納
+  │   ├── /components   // 再利用可能なUIコンポーネントを格納するフォルダ。
+  │   ├── App.jsx
+  │   ├── main.jsx
+  ├── .gitignore      
+  ├── eslint.config.js
+  ├── index.html
+  ├── package-lock.json
+  ├── package.json
+  ├── README.md
+  └── vite.config.js
+
+/server
+  ├── /db
+  │   ├── /migrations
+  │   ├── /seeds
+  │   ├── knex.js
+  ├── /node_modules
+  ├── /routes
+  ├── /tests
+  ├── .env.local
+  ├── .gitignore
+  ├── knexfile.js
+  ├── package-lock.json
+  ├── package.json
+  └── server.js
+
+
+## フロントエンドの構築(create-viteを使用した場合→jsxの拡張子になる)
+プロジェクトのルートディレクトリで'npx create-vite@latest <プロジェクト名> --template react'を実行
+'''
+cd ./<プロジェクト名>
+npm install
+npm install axios
+'''
+を実行。npm run devでサーバーを起動できるようになる。
+
+## フロントエンドの構築(create-reacrを使用した場合→jsの拡張子になる)
 プロジェクトのルートディレクトリで'npx create-react-app react-app'を実行
 ./react-app/src/App.jsを下記のように記述
 →バックエンドの/api/helloというAPIを呼び出す
@@ -74,6 +117,11 @@ node server.js
 '''
 cd ./react-app
 npm start
+
+もしくは、
+
+cd ./frontend
+npm run dev
 '''
 →起動後、http://localhost:3000でフロントが動作する
 
