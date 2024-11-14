@@ -1,14 +1,29 @@
 const express = require('express')
 const cors = require('cors')
-// const path = require('path')
 
 const app = express();
 const port = 5000;
 
-app.use(cors());
+const knex = require('./db/knex')
 
+app.use(cors());
+app.use(express.json());
+
+// serverとReactでのHello World用
 app.get('/api/hello', (req, res) => {
-    res.json({ message: 'Hello from the server!' });
+    res.json({ message: 'Hello World from the server!' });
+});
+
+// DBからデータを取得して返すエンドポイント
+app.get('/api/message', async (req, res) => {
+    try {
+        const message = await knex('messages').select('*')
+        console.log(message)
+        res.status(200).json(message);
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json({ error: 'Failed to get todos'})
+    }
 });
 
 app.listen(port, () => {
