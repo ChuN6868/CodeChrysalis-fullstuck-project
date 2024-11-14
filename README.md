@@ -1,6 +1,37 @@
 # CodeChrysalis-fullstuck-project
 
 ## セットアップ手順
+### cloneする
+作業用のディレクトリで下記のコマンドを実行
+```
+git clone https://github.com/ChuN6868/CodeChrysalis-fullstuck-project.git
+```
+
+### .env.localファイルの作成
+./server/.env.templateのファイル名を.env.localに修正し、下記のように設定する
+```
+DB_USER=<Postgresのユーザー名>
+DB_PASSWORD=<Postgresのパスワード>
+DB_NAME=<PostgresのDB名>
+PORT=<ポート番号 //特に問題なければ3000番>
+```
+
+### サーバーの立ち上げ
+- frontend
+下記のコマンドを実行
+```
+cd ./frontend
+npm install
+npm run dev
+```
+
+- server
+下記のコマンドを実行
+```
+cd ./server
+npm install
+node server.js
+```
 
 ## アプリの概要
 
