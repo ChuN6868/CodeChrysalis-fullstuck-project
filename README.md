@@ -17,14 +17,6 @@ PORT=<ポート番号 //特に問題なければ3000番>
 ```
 
 ### サーバーの立ち上げ
-- frontend
-下記のコマンドを実行
-```
-cd ./frontend
-npm install
-npm run dev
-```
-
 - server
 下記のコマンドを実行
 ```
@@ -32,6 +24,16 @@ cd ./server
 npm install
 node server.js
 ```
+
+- frontend
+下記のコマンドを実行
+```
+cd ./frontend
+npm install
+npm run dev
+```
+http://localhost:5173 にアクセス
+
 
 ## アプリの概要
 
