@@ -1,59 +1,59 @@
 # CodeChrysalis-fullstuck-project
 
 # ( ..)φメモメモ
-フロントエンドとバックエンドでディレクトリを分けた
-フロントエンド：frontend
-バックエンド：server
+フロントエンドとバックエンドでディレクトリを分けた<br>
+フロントエンド：frontend<br>
+バックエンド：server<br>
 
-/frontend
-  ├── /node_modules
-  ├── /public
-  ├── /src   
-  │   ├── /assets       // 画像やスタイルシート（CSS、Sassなど）を格納するフォルダ。
-  |   │   ├── /css      // cssを格納
-  │   │   ├── /images   // 画像ファイルを格納
-  │   ├── /components   // 再利用可能なUIコンポーネントを格納するフォルダ。
-  │   ├── App.jsx
-  │   ├── main.jsx
-  ├── .gitignore      
-  ├── eslint.config.js
-  ├── index.html
-  ├── package-lock.json
-  ├── package.json
-  ├── README.md
-  └── vite.config.js
+/frontend<br>
+  ├── /node_modules<br>
+  ├── /public<br>
+  ├── /src<br>
+  │&emsp;&emsp;├── /assets       // 画像やスタイルシート（CSS、Sassなど）を格納するフォルダ<br>
+  │&emsp;&emsp;│&emsp;&emsp;├── /css      // cssを格納<br>
+  │&emsp;&emsp;│&emsp;&emsp;├── /images   // 画像ファイルを格納<br>
+  │&emsp;&emsp;├── /components   // 再利用可能なUIコンポーネントを格納するフォルダ<br>
+  │&emsp;&emsp;├── App.jsx<br>
+  │&emsp;&emsp;├── main.jsx<br>
+  ├── .gitignore<br>
+  ├── eslint.config.js<br>
+  ├── index.html<br>
+  ├── package-lock.json<br>
+  ├── package.json<br>
+  ├── README.md<br>
+  └── vite.config.js<br>
 
-/server
-  ├── /db
-  │   ├── /migrations
-  │   ├── /seeds
-  │   ├── knex.js
-  ├── /node_modules
-  ├── /routes
-  ├── /tests
-  ├── .env.local
-  ├── .gitignore
-  ├── knexfile.js
-  ├── package-lock.json
-  ├── package.json
-  └── server.js
+/server<br>
+  ├── /db<br>
+  │&emsp;&emsp;├── /migrations<br>
+  │&emsp;&emsp;├── /seeds<br>
+  │&emsp;&emsp;├── knex.js<br>
+  ├── /node_modules<br>
+  ├── /routes<br>
+  ├── /tests<br>
+  ├── .env.local<br>
+  ├── .gitignore<br>
+  ├── knexfile.js<br>
+  ├── package-lock.json<br>
+  ├── package.json<br>
+  └── server.js<br>
 
 
 ## フロントエンドの構築(create-viteを使用した場合→jsxの拡張子になる)
-プロジェクトのルートディレクトリで'npx create-vite@latest <プロジェクト名> --template react'を実行
-'''
-cd ./<プロジェクト名>
-npm install
-npm install axios
-'''
-を実行。npm run devでサーバーを起動できるようになる。
+プロジェクトのルートディレクトリで'npx create-vite@latest <プロジェクト名> --template react'を実行<br>
+```
+cd ./<プロジェクト名><br>
+npm install<br>
+npm install axios<br>
+```
+を実行。npm run devでサーバーを起動できるようになる。<br>
 
 ## フロントエンドの構築(create-reacrを使用した場合→jsの拡張子になる)
 プロジェクトのルートディレクトリで'npx create-react-app react-app'を実行
 ./react-app/src/App.jsを下記のように記述
 →バックエンドの/api/helloというAPIを呼び出す
 
-'''
+```
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -75,18 +75,18 @@ function App() {
 }
 
 export default App;
-'''
+```
 
 ## バックエンド（Node.js + Express）の構築
 serverディレクトリに移動して次のコマンドを実行
-'''
+```
 npm init -y
 npm install express cors
-'''
+```
 
 serverディレクトリ内にserver.jsを作成し下記のように記述
 →/api/helloというエンドポイントが動作するようになる
-'''
+```
 const express = require('express');
 const cors = require('cors');
 
@@ -104,17 +104,17 @@ app.get('/api/hello', (req, res) => {
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
-'''
+```
 
 ## 各サーバーの起動
 バックエンド：
-'''
+```
 cd ./server
 node server.js
-'''
+```
 
 フロントエンド：
-'''
+```
 cd ./react-app
 npm start
 
@@ -122,36 +122,36 @@ npm start
 
 cd ./frontend
 npm run dev
-'''
+```
 →起動後、http://localhost:3000でフロントが動作する
 
 ## DBの環境構築
 バックエンドでknexを用いてDBとサーバーを接続する
-'''
+```
 cd ./server
 npm install knex pg dotenv
-'''
+```
 
 ./server/.env.localを作成し、下記のように記述
-'''
+```
 DB_USER=(各自で設定)
 DB_PASSWORD=(各自で設定)
 DB_NAME=react_app
 PORT=3000
-'''
+```
 
 ./server/db/knex.jsを作成し、下記のように記述
-'''
+```
 const knex = require('knex');
 const knexConfig = require('../knexfile')
 
 const environment = process.env.NODE_ENV || 'development'
 
 module.exports = knex(knexConfig[environment]);
-'''
+```
 
 ./server/knexfile.jsを作成し、下記のように記述
-'''
+```
 require('dotenv').config({ path: './.env.local' })
 
 // process.env.DB_NAME のように記述すればアクセスできるようになる
@@ -174,10 +174,10 @@ module.exports = {
   }
 
 };
-'''
+```
 
 ./server/server.jsを下記のように修正
-'''
+```
 const express = require('express')
 const cors = require('cors')
 
@@ -209,17 +209,17 @@ app.get('/api/message', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-'''
+```
 
 ### migrateファイルの作成
 下記のコマンドを実行
-'''
+```
 cd ./server
 npx knex migrate:make create_message_table
-'''
+```
 
 ./server/db/migrationsにmigrateファイルが作成されるので下記のように記述
-'''
+```
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
@@ -238,39 +238,39 @@ exports.up = function(knex) {
 exports.down = function(knex) {
     return knex.schema.dropTable('messages');
 };
-'''
+```
 
 package.jsonのscript内に下記のコードを追記し、npm run migrateを実行するとテーブルが作成される
-'''
+```
 "migrate": "knex migrate:latest"
-'''
+```
 ＊DB内にknex_migrationsというテーブルがあり、この中に不要なmigrateファイルが残っているとエラーになる
 →delete文で削除すれば解決する
 
 ### seederファイルの作成
 下記のコマンドを実行
-'''
+```
 cd ./server
 npx knex seed:make initial_messages --timestamp-filename-prefix
-'''
+```
 
 ./server/db/seedsにseederファイルが作成されるので下記のように記述
-'''
+```
 exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('messages').del()
   await knex('messages').insert([{ content: 'Content 1' }, { content: 'Content 2' }, { content: 'Content 3' }])
 };
-'''
+```
 
 package.jsonのscript内に下記のコードを追記し、npm run seedを実行するとテーブルが作成される
-'''
+```
 "seed": "knex seed:run"
-'''
+```
 
 ### フロント側の修正
 ./react-app/src/App.jsのuseEffectを下記のように修正
-'''
+```
 function App() {
   const [message, setMessage] = useState("");
 
@@ -286,4 +286,4 @@ function App() {
       .then((response) => setMessage(response.data.message))
       .catch(error => console.error("DBからのデータ取得でエラー発生", error))
   }, []);
-'''
+```
