@@ -138,6 +138,8 @@ const port = 5000;
 // CORSを有効にする（フロントエンドとバックエンドが異なるポートで動作するため）
 app.use(cors());
 
+app.use(express.json());
+
 // 簡単なAPIエンドポイント
 app.get('/api/hello', (req, res) => {
   res.json({ message: 'Hello World from the server!' });
