@@ -81,11 +81,12 @@ http://localhost:5173 にアクセス
 
 
 ## フロントエンドの構築(create-viteを使用した場合→jsxの拡張子になる)
-プロジェクトのルートディレクトリで'npx create-vite@latest <プロジェクト名> --template react'を実行<br>
+プロジェクトのルートディレクトリで下記のコマンドを実行
 ```
-cd ./<プロジェクト名><br>
-npm install<br>
-npm install axios<br>
+npx create-vite@latest <プロジェクト名> --template react
+cd ./<プロジェクト名>
+npm install
+npm install axios
 ```
 を実行。npm run devでサーバーを起動できるようになる。<br>
 
