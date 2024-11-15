@@ -49,6 +49,18 @@ app.post('/api/register', async (req, res) => {
     }
 });
 
+// DBから座席情報を取得して返すエンドポイント
+app.get('/api/seatinfo', async (req, res) => {
+    try {
+        const result = await knex('seats').select('*').orderBy('seat_number', 'asc')
+        console.log(result)
+        res.status(200).json(result);
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json({ error: 'Failed to seat info'})
+    }
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
