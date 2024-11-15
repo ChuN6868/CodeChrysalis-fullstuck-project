@@ -1,24 +1,23 @@
 import React, { useState } from "react"
 import axios from "axios"
 
-const RegisterForm = () => {
-  const [seatNumber, setSeatNumber] = useState('');
+const RegisterForm = ({clickedNumber, getSeatInfo}) => {
+  // const [seatNumber, setSeatNumber] = useState('');
   const [userName, setUserName] = useState('');
 
   const handleSubmit = async (event) => {
     event.preventDefault()
 
     const data = {
-        seatNumber: seatNumber,
+        seatNumber: clickedNumber,
         userName: userName
     }
 
     try {
-        const getRes = await axios.get('http://localhost:5000/api/hello');
-        console.log(getRes)
-        console.log(data)
-        const response = await axios.post('http://localhost:5000/api/register', data);
-        console.log(response);
+        const registRes = await axios.post('http://localhost:5000/api/register', data);
+        console.log(registRes);
+        getSeatInfo();
+
         console.log("全APIの完了")
     } catch (error) {
         console.error("座席情報の登録でエラーが発生", error.response);
@@ -28,12 +27,14 @@ const RegisterForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-        <input
+        {/* <input
             type="number"
+            min="1"
+            max="6"
             placeholder="Seat Number"
             value={seatNumber}
             onChange={(e) => setSeatNumber(e.target.value)}
-        />
+        /> */}
         <input 
             type="text"
             placeholder="User Name"

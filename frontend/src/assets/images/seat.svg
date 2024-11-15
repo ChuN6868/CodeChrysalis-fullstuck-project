@@ -155,6 +155,20 @@
                     text-anchor="middle">6</text>
             </switch>
         </g>
+        <g>
+            <text x="204" y="60" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-1"></text>
+            <text x="404" y="60" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-2"></text>
+            <text x="604" y="60" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-3"></text>
+            <text x="204" y="300" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-4"></text>
+            <text x="404" y="300" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-5"></text>
+            <text x="604" y="300" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="24px"
+                text-anchor="middle" data-seat-id="seat-6"></text>
+        </g>
     </g>
     <switch>
         <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" />
