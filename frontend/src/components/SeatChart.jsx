@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { ReactSVG } from "react-svg"
 import seatChart from '../assets/images/seat.svg'
 import "../assets/css/seat.css"
+import RegisterForm from "./RegisterForm";
 
 const SeatChart = () => {
   const [clickedNumber, setClickedNumber] = useState(null);
@@ -25,6 +26,7 @@ const SeatChart = () => {
           }}
         />
         <p>{clickedNumber}</p>
+        <RegisterForm />
     </div>
   );
 };

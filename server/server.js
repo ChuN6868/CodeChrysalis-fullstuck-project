@@ -14,7 +14,7 @@ app.get('/api/hello', (req, res) => {
     res.json({ message: 'Hello World from the server!' });
 });
 
-// DBからデータを取得して返すエンドポイント
+// DBからデータを取得して返すエンドポイント。Hello World用
 app.get('/api/message', async (req, res) => {
     try {
         const message = await knex('messages').select('*')
@@ -24,6 +24,14 @@ app.get('/api/message', async (req, res) => {
         console.log(err.stack)
         res.status(500).json({ error: 'Failed to get todos'})
     }
+});
+
+// 座席情報をDBに登録するエンドポイント
+app.post('/api/register', (req, res) => {
+    console.log("aaa")
+    const {seatNumber, userName} = req.body;
+    console.log({seatNumber, userName})
+    res.status(200).end();
 });
 
 app.listen(port, () => {
