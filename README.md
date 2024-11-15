@@ -22,7 +22,7 @@ PORT=<ポート番号 //特に問題なければ3000番>
 ```
 cd ./server
 npm install
-node server.js
+npm run dev
 ```
 
 - frontend
@@ -123,7 +123,7 @@ export default App;
 serverディレクトリに移動して次のコマンドを実行
 ```
 npm init -y
-npm install express cors
+npm install express cors nodemon
 ```
 
 serverディレクトリ内にserver.jsを作成し下記のように記述
@@ -155,6 +155,10 @@ app.listen(port, () => {
 ```
 cd ./server
 node server.js
+
+*package.jsonのscriptに"dev": "nodemon server.js"を追記すれば下記のコマンドでも起動できる
+npm run dev
+→server.jsを更新した際にサーバーを再起動する必要がなくなるのでこっちが良い
 ```
 
 フロントエンド：
