@@ -18,7 +18,8 @@ const RegisterForm = () => {
         console.log(getRes)
         console.log(data)
         const response = await axios.post('http://localhost:5000/api/register', data);
-        console.log(response.data);
+        console.log(response);
+        console.log("全APIの完了")
     } catch (error) {
         console.error("座席情報の登録でエラーが発生", error.response);
     }
@@ -28,7 +29,7 @@ const RegisterForm = () => {
   return (
     <form onSubmit={handleSubmit}>
         <input
-            type="text"
+            type="number"
             placeholder="Seat Number"
             value={seatNumber}
             onChange={(e) => setSeatNumber(e.target.value)}

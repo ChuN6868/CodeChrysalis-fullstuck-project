@@ -27,11 +27,26 @@ app.get('/api/message', async (req, res) => {
 });
 
 // 座席情報をDBに登録するエンドポイント
-app.post('/api/register', (req, res) => {
-    console.log("aaa")
-    const {seatNumber, userName} = req.body;
-    console.log({seatNumber, userName})
-    res.status(200).end();
+app.post('/api/register', async (req, res) => {
+    try {
+        console.log("aaa")
+        const temp = "OK post API"
+        const {seatNumber, userName} = req.body;
+        console.log({seatNumber, userName})
+        console.log(seatNumber)
+
+        const result = await knex('seats')
+            .where({ seat_number: seatNumber })
+            .update({ user_name: userName });
+        if (result > 0) {
+            res.status(200).json({ message: 'Seat info updated successfully!' });
+        } else {
+            res.status(404).json({ error: 'Seat not found' })
+        }
+    } catch (err) {
+        console.log(err.stack)
+        res.status(500).json({ error: 'Failed to post API'})
+    }
 });
 
 app.listen(port, () => {
