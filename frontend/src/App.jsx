@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SeatChart from "./components/SeatChart";
+import './assets/css/seat.css';
 
 function App() {
   const [hello, setHello] = useState("");
@@ -31,11 +32,12 @@ function App() {
   }, []);
 
   return (
-    <div>
-      <h1>{hello}</h1>
+    <div className="center-contents">
+      {/* <h1>{hello}</h1> */}
+      <h1 className="app-title">座席管理アプリ</h1>
       <SeatChart />
-      <h1>{message}</h1>
-      <p className="db-test">DBテスト</p>
+      {/* <h1>{message}</h1> */}
+      {/* <p className="db-test">DBテスト</p> */}
     </div>
   );
 }

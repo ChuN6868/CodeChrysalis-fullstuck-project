@@ -36,12 +36,13 @@ const RegisterForm = ({clickedNumber, getSeatInfo}) => {
             onChange={(e) => setSeatNumber(e.target.value)}
         /> */}
         <input 
+            className="regist-form-input"
             type="text"
             placeholder="User Name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
         />
-        <button type="submit">座席情報の登録</button>
+        <button className="regist-form-button" type="submit">座席情報の登録</button>
     </form>
   );
 };
