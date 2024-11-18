@@ -152,12 +152,14 @@ app.use(express.json());
 
 // 簡単なAPIエンドポイント
 app.get('/api/hello', (req, res) => {
-  res.json({ message: 'Hello World from the server!' });
+  res.status(200).json({ message: 'Hello World from the server!' });
 });
 
 app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
+
+module.exports = app
 ```
 
 ## 各サーバーの起動
@@ -344,4 +346,42 @@ function App() {
       .then((response) => setMessage(response.data.message))
       .catch(error => console.error("DBからのデータ取得でエラー発生", error))
   }, []);
+```
+
+## バックエンドのテストコード作成
+下記のコマンドを実行してdevDependenciesに必要なパッケージをインストールする。<br>
+なお、dependenciesにインストールされたパッケージは'npm install'でインストールされ、devDependenciesは'npm install --dev'または'npm install(開発時)'でインストールされる。<br>
+基本的に本番環境に必要なものだけdependenciesで、テスト用のパッケージなどはdevDependenciesにインストールする。<br>
+```
+./server/test/test.jsを作成
+cd ./server
+npm install --save-dev mocha chai@4 chai-http@4
+```
+
+test.jsに下記のように記述
+```
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const app = require("../server");
+const expect = chai.expect;
+
+chai.use(chaiHttp);
+
+describe('GET /api/hello', () => {
+    it("should return status 200", async () => {
+        const res = await chai.request(app).get("/api/hello");
+        expect(res).to.have.status(200);
+    });
+});
+```
+
+package.jsonの"scripts"内に下記の1行を追加
+```
+"test": "mocha test",
+```
+
+下記のコマンドでバックエンドのテストが実行される
+```
+cd ./server
+npm run test
 ```
