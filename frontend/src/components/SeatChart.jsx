@@ -66,11 +66,11 @@ const SeatChart = () => {
       />
       {clickedNumber ? (
         <>
-          <p>{clickedNumber}番の座席が選択されています</p>
+          <p className="regist-msg">{clickedNumber}番の座席が選択されています</p>
           <RegisterForm clickedNumber={clickedNumber} getSeatInfo={getSeatInfo} />
         </>
       ) : (
-        <p>座席を選択してください</p>
+        <p className="regist-msg">座席を選択してください</p>
       )}
       {/* <p>{seatInfo}</p> */}
     </div>

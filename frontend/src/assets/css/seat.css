@@ -1,3 +1,32 @@
+.center-contents {
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.app-title {
+    text-align: center;
+}
+
 .seat-button:hover {
     fill: aqua;
+    cursor: pointer;
+}
+
+.regist-msg {
+    font-size: 24px;
+}
+
+.regist-form-input {
+    padding: 12px;
+    font-size: 16px;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.regist-form-button {
+    padding: 12px 24px;
+    font-size: 16px;
+    width: 250px;
+    cursor: pointer;
 }
