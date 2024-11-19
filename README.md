@@ -16,12 +16,14 @@ DB_NAME=<PostgresのDB名>
 PORT=<ポート番号 //特に問題なければ3000番>
 ```
 
-### サーバーの立ち上げ
+### サーバーの立ち上げ+マイグレーション
 - server
 下記のコマンドを実行
 ```
 cd ./server
 npm install
+npm run migrate
+npm run seed
 npm run dev
 ```
 
