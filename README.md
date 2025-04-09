@@ -403,6 +403,7 @@ cd <ディレクトリ名>
 npm init -y
 npm install express
 npm install --save-dev typescript @types/node @types/express
+npx tsc --init
 mkdir src
 ```
 
