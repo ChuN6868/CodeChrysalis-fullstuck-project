@@ -387,3 +387,32 @@ package.jsonの"scripts"内に下記の1行を追加
 cd ./server
 npm run test
 ```
+
+
+# TypeScriptでの環境構築
+## フロントエンド
+下記のコマンドで作成可能
+```
+npx create-vite@latest <プロジェクト名> --template react-ts
+```
+
+## バックエンド（作成途中、不正確な情報含まれる。お気に入りバーにTypeScriptの情報入れたので読んで確認）
+適当な名前でディレクトリを作成し次のコマンドを実行
+```
+cd <ディレクトリ名>
+npm init -y
+npm install express
+npm install --save-dev typescript @types/node @types/express
+mkdir src
+```
+
+srcディレクトリ配下にindex.tsを作成し、下記のように記述
+```
+const express = require('express');
+const app = express();
+const port = 3001;
+
+app.get('/', (req, res) => res.send('Hello World!'));
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+```
