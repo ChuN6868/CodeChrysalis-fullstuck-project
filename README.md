@@ -99,6 +99,9 @@ npx create-vite@latest <プロジェクト名> --template react
 cd ./<プロジェクト名>
 npm install
 npm install axios
+
+※もしReactのバージョンを指定したい場合は、プロジェクト作成後に下記のコマンドを実行（v18の場合）
+npm install react@18 react-dom@18
 ```
 を実行。npm run devでサーバーを起動できるようになる。<br>
 
