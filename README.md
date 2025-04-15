@@ -404,9 +404,9 @@ npx create-vite@latest <プロジェクト名> --template react-ts
 ```
 cd <ディレクトリ名>
 npm init -y
-npm install express cors nodemon
+npm install express cors
 npm install --save-dev typescript @types/node @types/express
-npm install --save-dev ts-node
+npm install --save-dev ts-node nodemon
 npx tsc --init
 mkdir src
 ```
