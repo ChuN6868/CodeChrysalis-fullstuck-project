@@ -404,21 +404,47 @@ npx create-vite@latest <プロジェクト名> --template react-ts
 ```
 cd <ディレクトリ名>
 npm init -y
-npm install express
+npm install express cors nodemon
 npm install --save-dev typescript @types/node @types/express
+npm install --save-dev ts-node
 npx tsc --init
 mkdir src
 ```
 
 srcディレクトリ配下にindex.tsを作成し、下記のように記述
 ```
+import { Request, Response } from "express";
 const express = require('express');
+const cors = require('cors');
+
 const app = express();
-const port = 3001;
+const port = 5000;
 
-app.get('/', (req, res) => res.send('Hello World!'));
+// CORSを有効にする（フロントエンドとバックエンドが異なるポートで動作するため）
+app.use(cors());
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.use(express.json());
+
+// 簡単なAPIエンドポイント
+app.get('/api/hello', (req: Request, res: Response) => {
+  res.status(200).json({ message: 'Hello World from the ts server!' });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
+
+module.exports = app
+```
+
+package.jsonのscriptに下記を追記
+```
+"dev": "nodemon --watch src --exec ts-node src/index.ts"
+```
+
+起動コマンド
+```
+npm run dev
 ```
 
 # Material UIの導入
