@@ -396,7 +396,16 @@ npm run test
 ## フロントエンド
 下記のコマンドで作成可能
 ```
+// プロジェクト作成
 npx create-vite@latest <プロジェクト名> --template react-ts
+
+// 作成したディレクトリに移動
+cd <プロジェクト名>
+
+npm install
+
+// サーバーの起動
+npm run dev
 ```
 
 ## バックエンド（作成途中、不正確な情報含まれる。お気に入りバーにTypeScriptの情報入れたので読んで確認）
